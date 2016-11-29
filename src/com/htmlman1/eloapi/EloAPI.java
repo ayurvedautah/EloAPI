@@ -25,17 +25,22 @@ public class EloAPI {
     *   The k-factor to use for the calculation. Higher values will make ratings
     *   change more drastically.
     * @return
-    *   An int[] primitve array, with the first int being A's new rating, and the
+    *   An int[] primitive array, with the first int being A's new rating, and the
     *   second being B's new ranking.
     */
   public int[] calculateNewRatings(int a, int b, String winner, int k) {
-		double ea = 1 / (1 + Math.pow(10, (b - a) / 400));
-		double eb = 1 - ea;
-		int sa = (winner.equalsIgnoreCase("a")) ? 1 : 0;
-		int sb = 1 - sa;
-		int an = (int) Math.floor(a + k * (sa - ea));
-		int bn = (int) Math.floor(b + k * (sb - eb));
-		return new int[]{an, bn};
-	}
+	  
+	double ea = 1 / (1 + Math.pow(10, (b - a) / 400));
+	double eb = 1 - ea;
+
+	int sa = (winner.equalsIgnoreCase("a")) ? 1 : 0;
+	int sb = 1 - sa;
+
+	int an = (int) Math.floor(a + k * (sa - ea));
+	int bn = (int) Math.floor(b + k * (sb - eb));
+	  
+	return new int[]{an, bn};
+	  
+  }
 
 }
